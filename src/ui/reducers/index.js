@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import update from './update'
+import tracker from './tracker'
 
 export default combineReducers({
-  update,
+  tracker,
 });
