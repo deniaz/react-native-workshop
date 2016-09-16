@@ -5,7 +5,7 @@ import {
 
 import { Provider } from 'react-redux';
 
-import { defaultRoute, route, store } from './infrastructure';
+import { defaultRoute, route, store } from './';
 
 const SACTracker = () => (
   <Provider store={store}>
