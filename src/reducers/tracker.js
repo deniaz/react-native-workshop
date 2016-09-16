@@ -12,6 +12,7 @@ const handler = {
   [CURRENT_STATE_TRACKER_STARTED]: (state, action) => {
     console.debug(CURRENT_STATE_TRACKER_STARTED);
     return Object.assign({}, state, {
+      interval: action.data
       isTracking: true,
     });
   },
@@ -24,6 +25,7 @@ const handler = {
 };
 
 const initialState = {
+  interval: null,
   isTracking: false,
   lastUpdate: null,
 }
