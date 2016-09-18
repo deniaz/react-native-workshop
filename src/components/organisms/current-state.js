@@ -21,13 +21,14 @@ export default class CurrentState extends Component {
   }
 
   render() {
-    const { isTracking, lastUpdate } = this.props;
+    const { isSynced, isTracking, lastUpdate } = this.props;
 
     return (
       <View>
         <Text>Current State</Text>
         <Text>{isTracking ? 'Tracking' : 'Not Tracking'}</Text>
         <Text>{lastUpdate ? lastUpdate.toString() : 'No Updates.'}</Text>
+        <Text>{isSynced ? 'Sent to server' : 'Not sent to server'}</Text>
       </View>
     )
   }

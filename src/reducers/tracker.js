@@ -47,7 +47,7 @@ const handler = {
 const initialState = {
   interval: null,
   isTracking: false,
-  isSynced: true,
+  isSynced: false,
   lastPosition: null,
   lastUpdate: null,
 }
