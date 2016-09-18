@@ -38,28 +38,34 @@ const notifyServerSuccess = () => ({
   type: CURRENT_STATE_NOTIFY_SERVER_SUCCESS,
 });
 
-const notifyServerError = () => ({
+const notifyServerError = (error) => ({
   type: CURRENT_STATE_NOTIFY_SERVER_ERROR,
+  data: error
 });
 
 const notifyServer = (position) => (dispatch) => {
-  fetch('http://private-6b85a9-rntracker.apiary-mock.com/beacons', {
+  const payload = JSON.stringify({
+    coords: {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      accuracy: position.coords.accuracy
+    }
+  });
+
+  fetch('https://private-6b85a9-rntracker.apiary-mock.com/beacons', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: {
-      coords: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        accuracy: position.coords.accuracy,
-      },
-    }
+    body: payload
   })
-  .then((response) => response.json())
-  .then((data) => {
-    dispatch(notifyServerSuccess())
+  .then((response) => {
+    if (response.ok) {
+      dispatch(notifyServerSuccess())
+    } else {
+      dispatch(notifyServerError(response))
+    }
   })
   .catch((error) => {
     dispatch(notifyServerError(error))
@@ -70,9 +76,7 @@ const getLocation = () => (dispatch) => {
   navigator
     .geolocation
     .getCurrentPosition(
-      (json) => {
-        const position = JSON.stringify(position);
-
+      (position) => {
         dispatch(createLocationFound(position));
         dispatch(notifyServer(position));
       },

@@ -4,6 +4,7 @@ import actions from '../actions/tracker';
 import CurrentState from '../components/organisms/current-state';
 
 const mapStateToProps = (state) => ({
+  isSynced: state.tracker.isSynced,
   isTracking: state.tracker.isTracking,
   lastUpdate: state.tracker.lastUpdate,
 });
