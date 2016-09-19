@@ -9,7 +9,11 @@ The Code was used and partially developed during a Workshop at [#NCamp16](https:
 2. [Setup](#setup)
 
 ## Prerequisits
-To run React Native projects you need four things:
+Extensive documentation on how to install and get started with React Native can be found in the official [docs](https://facebook.github.io/react-native/docs/getting-started.html). Depending on what OS you're developing on and what target OS you have in mind, you need to install different stuff.
+
+The quickest way to get up and running is a Mac OS X Setup with iOS. On Windows and Linux only Android development is available. For these setup guides, please refer to the docs.
+
+TL;DR: To run React Native projects you need four things:
 
 1. Install Node: `brew install node`
 2. Install watchman: `brew install watchman`
