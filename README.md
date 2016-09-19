@@ -9,9 +9,12 @@ The Code was used and partially developed during a Workshop at [#NCamp16](https:
 2. [Setup](#setup)
 
 ## Prerequisits
+To run React Native projects you need four things:
+
 1. Install Node: `brew install node`
 2. Install watchman: `brew install watchman`
 3. Install React Native CLI: `npm install -g react-native-cli`
+4. Install XCode: [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) (the easy way)
 
 ## Setup
 1. Fork this Repository on GitHub
