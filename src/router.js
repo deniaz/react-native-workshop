@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from './components/scenes/home';
+import Home from './containers/home';
 
 const router = (navigator) => ({
   home: <Home navigator={navigator} />,

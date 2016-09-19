@@ -6,6 +6,7 @@ import CurrentState from '../components/organisms/current-state';
 const mapStateToProps = (state) => ({
   isSynced: state.tracker.isSynced,
   isTracking: state.tracker.isTracking,
+  lastPosition: state.tracker.lastPosition,
   lastUpdate: state.tracker.lastUpdate,
 });
 

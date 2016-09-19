@@ -1,49 +1,56 @@
 import BackgroundTimer from 'react-native-background-timer';
 
-export const CURRENT_STATE_START_TRACKER = 'CURRENT_STATE: START_TRACKER';
-export const CURRENT_STATE_TRACKER_STARTED = 'CURRENT_STATE: TRACKER_STARTED';
-export const CURRENT_STATE_TRACKER_TICK = 'CURRENT_STATE: TRACKER_TICK';
-export const CURRENT_STATE_LOCATION_FOUND = 'CURRENT_STATE: LOCATION_FOUND';
-export const CURRENT_STATE_LOCATION_ERROR = 'CURRENT_STATE: LOCATION_ERROR';
-export const CURRENT_STATE_NOTIFY_SERVER_SUCCESS = 'CURRENT_STATE: NOTIFY_SERVER_SUCCESS';
-export const CURRENT_STATE_NOTIFY_SERVER_ERROR = 'CURRENT_STATE: NOTIFY_SERVER_ERROR';
+export const TRACKER_START_TRACKER = 'TRACKER: START_TRACKER';
+export const TRACKER_TRACKER_STARTED = 'TRACKER: TRACKER_STARTED';
+export const TRACKER_TRACKER_TICK = 'TRACKER: TRACKER_TICK';
+export const TRACKER_LOCATION_FOUND = 'TRACKER: LOCATION_FOUND';
+export const TRACKER_LOCATION_ERROR = 'TRACKER: LOCATION_ERROR';
+export const TRACKER_NOTIFY_SERVER_SUCCESS = 'TRACKER: NOTIFY_SERVER_SUCCESS';
+export const TRACKER_NOTIFY_SERVER_ERROR = 'TRACKER: NOTIFY_SERVER_ERROR';
+export const TRACKER_NOTIFY_SERVER = 'TRACKER: NOTIFY_SERVER';
 
-const DEFAULT_TRACKING_DELAY = 300000;
+const DEFAULT_TRACKING_DELAY = 5000;
 
 const createStartTracker = () => ({
-  type: CURRENT_STATE_START_TRACKER,
+  type: TRACKER_START_TRACKER,
 });
 
 const createTrackerStarted = (interval) => ({
-  type: CURRENT_STATE_TRACKER_STARTED,
+  type: TRACKER_TRACKER_STARTED,
   data: interval
 });
 
 const createTrackerTick = (timestamp = new Date) => ({
-  type: CURRENT_STATE_TRACKER_TICK,
+  type: TRACKER_TRACKER_TICK,
   data: timestamp,
 });
 
 const createLocationFound = (position) => ({
-  type: CURRENT_STATE_LOCATION_FOUND,
+  type: TRACKER_LOCATION_FOUND,
   data: position
 });
 
 const createLocationError = (error) => ({
-  type: CURRENT_STATE_LOCATION_ERROR,
+  type: TRACKER_LOCATION_ERROR,
   data: error
 });
 
 const notifyServerSuccess = () => ({
-  type: CURRENT_STATE_NOTIFY_SERVER_SUCCESS,
+  type: TRACKER_NOTIFY_SERVER_SUCCESS,
 });
 
 const notifyServerError = (error) => ({
-  type: CURRENT_STATE_NOTIFY_SERVER_ERROR,
+  type: TRACKER_NOTIFY_SERVER_ERROR,
   data: error
 });
 
+const createNotifyServer = () => ({
+  type: TRACKER_NOTIFY_SERVER,
+});
+
 const notifyServer = (position) => (dispatch) => {
+  dispatch(createNotifyServer());
+  
   const payload = JSON.stringify({
     coords: {
       lat: position.coords.latitude,
